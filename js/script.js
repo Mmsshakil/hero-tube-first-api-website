@@ -19,7 +19,7 @@ const handleCatagory = async () => {
 }
 
 
-const handleLoad = async(catagoryId) =>{
+const handleLoad = async (catagoryId) => {
     // console.log(catagoryId);
     const respons = await fetch(`https://openapi.programming-hero.com/api/videos/category/${catagoryId}`);
     const data = await respons.json();
@@ -28,25 +28,28 @@ const handleLoad = async(catagoryId) =>{
     const cardContainer = document.getElementById('card-container');
     data.data.forEach((cards) => {
         const div = document.createElement("div");
+
+        // console.log(cards.authors[0].profile_picture);
         div.innerHTML = `
         
         <div class="card  bg-base-100 shadow-xl">
         <!-- card main img -->
-        <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+        <figure><img src=${cards?.thumbnail} /></figure>
         <div class="card-body">
             <div class="flex">
                 <div>
                     <!-- card profile img -->
-                    <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="">
+        <figure><img class="rounded-full w-10 h-10" src=${cards?.authors[0]?.profile_picture} /></figure>
+
                 </div>
 
                 <div>
                     <!-- title -->
-                    <h2 class="card-title">Shoes!</h2>
+                    <h2 class="card-title">${cards?.title}</h2>
                     <div>
                         <div>
                             <!-- profile name -->
-                            <p>If a dog chews shoes whose shoes does he choose?</p>
+                            <p>${cards?.authors[0]?.profile_name}</p>
                         </div>
                         <div>
                             <!-- blue verified -->
@@ -54,7 +57,7 @@ const handleLoad = async(catagoryId) =>{
                         </div>
                     </div>
                     <!-- views -->
-                    <p> views </p>
+                    <p>${cards?.others?.views}</p>
 
                 </div>
             </div>
