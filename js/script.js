@@ -29,6 +29,8 @@ const handleLoad = async (catagoryId) => {
     data.data.forEach((cards) => {
         const div = document.createElement("div");
 
+        // ----------------------------
+
         // console.log(cards.authors[0].profile_picture);
         div.innerHTML = `
         
@@ -39,23 +41,25 @@ const handleLoad = async (catagoryId) => {
             <div class="flex">
                 <div>
                     <!-- card profile img -->
-        <figure><img class="rounded-full w-10 h-10" src=${cards?.authors[0]?.profile_picture} /></figure>
-
+                      <figure><img class="rounded-full w-10 h-10" src=${cards?.authors[0]?.profile_picture} /></figure>
                 </div>
 
                 <div>
                     <!-- title -->
                     <h2 class="card-title">${cards?.title}</h2>
-                    <div>
+
+                    <div class="flex">
                         <div>
                             <!-- profile name -->
                             <p>${cards?.authors[0]?.profile_name}</p>
                         </div>
-                        <div>
-                            <!-- blue verified -->
 
+                        <div  class="pl-1 text-blue-600">
+                         ${cards?.authors[0]?.verified ? '<i class="fa-solid fa-circle-check"></i>' : ""}
+                       
                         </div>
                     </div>
+
                     <!-- views -->
                     <p>${cards?.others?.views}</p>
 
