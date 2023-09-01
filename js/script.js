@@ -26,6 +26,11 @@ const handleLoad = async (catagoryId) => {
     // console.log(data.data);
 
     const cardContainer = document.getElementById('card-container');
+    // clear the old cards
+    cardContainer.innerHTML = "";
+
+
+
     data.data.forEach((cards) => {
         const div = document.createElement("div");
 
@@ -77,3 +82,5 @@ const handleLoad = async (catagoryId) => {
 }
 
 handleCatagory();
+
+handleLoad("1000");
