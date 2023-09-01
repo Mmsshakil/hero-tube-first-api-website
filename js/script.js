@@ -15,19 +15,49 @@ const handleCatagory = async () => {
 
     });
 
-    console.log(data.data);
+    // console.log(data.data);
 }
 
 
 const handleLoad = async (catagoryId) => {
     // console.log(catagoryId);
+
     const respons = await fetch(`https://openapi.programming-hero.com/api/videos/category/${catagoryId}`);
     const data = await respons.json();
-    // console.log(data.data);
+
+    console.log(data.data);
+
 
     const cardContainer = document.getElementById('card-container');
     // clear the old cards
     cardContainer.innerHTML = "";
+
+
+    // ---------- no found------------
+    if (data.data.length === 0) {
+        console.log('no found');
+
+        cardContainer.classList.remove("grid", "grid-cols-1", "md:grid-cols-2", "lg:grid-cols-4", "gap-3");
+
+
+        cardContainer.innerHTML = `
+        <div class="flex flex-col text-center items-center text-3xl font-bold mt-40">
+        <div>
+            <img src="./images/Icon.png" alt="">
+        </div>
+        <div>
+            <p>Oops!! Sorry, There is no <br> content here</p>
+        </div>
+    </div>
+        
+        `
+
+    }
+    else {
+        cardContainer.classList.add("grid", "grid-cols-1", "md:grid-cols-2", "lg:grid-cols-4", "gap-3");
+
+    }
+    // -----------------------------
 
 
 
