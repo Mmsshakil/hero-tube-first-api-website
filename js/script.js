@@ -8,7 +8,7 @@ const handleCatagory = async () => {
     trimData.forEach((catagory) => {
         const div = document.createElement("div");
         div.innerHTML = `
-        <a onclick="handleLoad(${catagory.category_id})" class="tab">${catagory.category}</a>
+        <a onclick="handleLoad(${catagory.category_id})" class="tab" onmouseover="this.style.color='red'" onmouseout="this.style.color='gray'">${catagory.category}</a>
         `
         tabContainer.appendChild(div);
 
@@ -26,6 +26,7 @@ const handleLoad = async (catagoryId) => {
     const data = await respons.json();
 
     console.log(data.data);
+
 
 
     const cardContainer = document.getElementById('card-container');
@@ -64,17 +65,19 @@ const handleLoad = async (catagoryId) => {
     data.data.forEach((cards) => {
         const div = document.createElement("div");
 
+        console.log(cards.others.views);
+
         // ----------------------------
 
         // console.log(cards.authors[0].profile_picture);
         div.innerHTML = `
         
-        <div class="card  bg-base-100 shadow-xl">
+        <div class="card w-80 lg:w-72 mx-auto h-80 bg-base-100 ">
         <!-- card main img -->
-        <figure><img src=${cards?.thumbnail} /></figure>
-        <div class="card-body">
+        <figure class="h-80 rounded-md"><img src=${cards?.thumbnail} /></figure>
+        <div class="card-body px-1 ">
             <div class="flex">
-                <div>
+                <div class="mr-3">
                     <!-- card profile img -->
                       <figure><img class="rounded-full w-10 h-10" src=${cards?.authors[0]?.profile_picture} /></figure>
                 </div>
@@ -83,8 +86,8 @@ const handleLoad = async (catagoryId) => {
                     <!-- title -->
                     <h2 class="card-title">${cards?.title}</h2>
 
-                    <div class="flex">
-                        <div>
+                    <div class="flex mt-2">
+                        <div class="mb-1">
                             <!-- profile name -->
                             <p>${cards?.authors[0]?.profile_name}</p>
                         </div>
