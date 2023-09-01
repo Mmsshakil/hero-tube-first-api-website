@@ -1,8 +1,6 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,17 +8,34 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
 
-    
-<div class="flex flex-col text-center items-center text-3xl font-bold mt-40 h-80 text-xl  w-72 pr-3">
-    <div>
-        <img src="./images/Icon.png" alt="">
+
+    <div class="flex flex-col text-center items-center text-3xl font-bold mt-40 h-80 text-xl  w-72 pr-3">
+        <div>
+            <img src="./images/Icon.png" alt="">
+        </div>
+        <div>
+            <p>Oops!! Sorry, There is no <br> content here</p>
+        </div>
     </div>
-    <div>
-        <p>Oops!! Sorry, There is no <br> content here</p>
+
+    <div class="items-end text-right justify-end">
+        <div class="text-right w-36 bg-[#171717] rounded-md">
+            ${cards.others.posted_date > 0 ? `<p>${hours}hrs ${minutes}min ago</p>` : ""}
+        </div>
     </div>
-</div>
-    
+
+    <div class="flex justify-end absolute left-20">
+        <div >
+            ${cards.others.posted_date > 0 ? `<p
+                class="text-center text-white p-1 w-36 bg-[#171717] rounded-md text-xs">${hours}hrs ${minutes}min ago
+            </p>` : ``}
+        </div>
+    </div>
+
+
 </body>
+
 </html>

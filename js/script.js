@@ -65,9 +65,27 @@ const handleLoad = async (catagoryId) => {
     data.data.forEach((cards) => {
         const div = document.createElement("div");
 
-        console.log(cards.others.views);
+        // ------cauculate time--------------
+        // console.log(cards.others.posted_date);
+        let second = cards.others.posted_date;
 
-        // ----------------------------
+
+        console.log(second);
+        let minutes = 0;
+        let hours = 0;
+
+        hours = parseInt(second / 3600);
+        console.log(hours);
+
+        second = parseInt(second % 3600);
+        minutes = parseInt(second / 60);
+        console.log(minutes);
+
+        second = parseInt(second % 60);
+        console.log(second);
+
+
+        // -----------------------------------
 
         // console.log(cards.authors[0].profile_picture);
         div.innerHTML = `
@@ -75,6 +93,16 @@ const handleLoad = async (catagoryId) => {
         <div class="card w-80 lg:w-72 mx-auto h-80 bg-base-100 ">
         <!-- card main img -->
         <figure class="h-80 rounded-md"><img src=${cards?.thumbnail} /></figure>
+        
+        <!-- -----time part ----- -->
+        <div class="flex justify-end absolute left-32 top-32">
+            <div>
+                ${cards.others.posted_date > 0 ? `<p class="text-center text-white p-1 w-36 bg-[#171717] rounded-md text-xs">${hours}hrs ${minutes}min ago</p>` : ``} 
+            </div>
+        </div>
+        <!-- -------------------- -->
+        
+        
         <div class="card-body px-1 ">
             <div class="flex">
                 <div class="mr-3">
